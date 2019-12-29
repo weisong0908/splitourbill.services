@@ -66,8 +66,8 @@ namespace Identity
             new TestUser()
             {
                 SubjectId = Guid.NewGuid().ToString(),
-                Username = "user1",
-                Password = "password1",
+                Username = "WS",
+                Password = "WS",
                 Claims = new List<Claim>()
                 {
                     new Claim(JwtClaimTypes.Name, "my name"),
