@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/weisong0908/Projects/splitourbill-services/User/User.csproj": {}
+    "/Users/weisong0908/Projects/splitourbill-services/UserService/UserService.csproj": {}
   },
   "projects": {
-    "/Users/weisong0908/Projects/splitourbill-services/User/User.csproj": {
+    "/Users/weisong0908/Projects/splitourbill-services/UserService/UserService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/weisong0908/Projects/splitourbill-services/User/User.csproj",
-        "projectName": "User",
-        "projectPath": "/Users/weisong0908/Projects/splitourbill-services/User/User.csproj",
+        "projectUniqueName": "/Users/weisong0908/Projects/splitourbill-services/UserService/UserService.csproj",
+        "projectName": "UserService",
+        "projectPath": "/Users/weisong0908/Projects/splitourbill-services/UserService/UserService.csproj",
         "packagesPath": "/Users/weisong0908/.nuget/packages/",
-        "outputPath": "/Users/weisong0908/Projects/splitourbill-services/User/obj/",
+        "outputPath": "/Users/weisong0908/Projects/splitourbill-services/UserService/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
