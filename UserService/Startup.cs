@@ -29,6 +29,8 @@ namespace UserService
         {
             services.AddControllers();
             services.AddDbContext<UserServiceDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("Default")));
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
