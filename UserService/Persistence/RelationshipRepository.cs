@@ -12,6 +12,7 @@ namespace UserService.Persistence
     {
         private readonly UserServiceDbContext _dbContext;
         private readonly ILogger<RelationshipRepository> _logger;
+
         public RelationshipRepository(UserServiceDbContext dbContext, ILogger<RelationshipRepository> logger)
         {
             _logger = logger;

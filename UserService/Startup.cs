@@ -30,6 +30,7 @@ namespace UserService
             services.AddControllers();
             services.AddDbContext<UserServiceDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("Default")));
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IRelationshipRepository, RelationshipRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
