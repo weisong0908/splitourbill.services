@@ -10,6 +10,7 @@ namespace UserService.Persistence
         Task AddRelationship(Relationship relationship);
         Task<Relationship> DeleteRelationship(Guid id);
         Task<IEnumerable<Relationship>> GetRelationships(Guid userId);
+        Task<Relationship> GetRelationship(Guid id);
         Task UpdateRelationship(Relationship relationship);
     }
 }

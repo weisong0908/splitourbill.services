@@ -67,5 +67,15 @@ namespace UserService.Persistence
 
             _dbContext.Entry(relationship).State = EntityState.Modified;
         }
+
+        public async Task<Relationship> GetRelationship(Guid id)
+        {
+            var relationship = await _dbContext.Relationships.SingleOrDefaultAsync(r => r.Id == id);
+
+            if (relationship == null)
+                throw new Exception($"relationship with Id {id} is not found.");
+
+            return relationship;
+        }
     }
 }
