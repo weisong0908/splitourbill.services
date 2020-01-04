@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using UserService.Persistence;
+using Microsoft.OpenApi.Models;
 
 namespace UserService
 {
@@ -32,6 +33,7 @@ namespace UserService
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRelationshipRepository, RelationshipRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddSwaggerGen(sa => sa.SwaggerDoc("v1", new OpenApiInfo() { Title = "User Service", Version = "1" }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +49,9 @@ namespace UserService
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(sa => sa.SwaggerEndpoint("/swagger/v1/swagger.json", "User Service V1"));
 
             app.UseEndpoints(endpoints =>
             {
