@@ -22,9 +22,10 @@ namespace UserService.Persistence
 
             modelBuilder.Entity<Relationship>().ToTable("relationships");
             modelBuilder.Entity<Relationship>().Property(r => r.Id).HasColumnName("id");
-            modelBuilder.Entity<Relationship>().Property(r => r.User1).HasColumnName("user1");
-            modelBuilder.Entity<Relationship>().Property(r => r.User2).HasColumnName("user2");
+            modelBuilder.Entity<Relationship>().Property(r => r.Requestor).HasColumnName("requestor");
+            modelBuilder.Entity<Relationship>().Property(r => r.Requestee).HasColumnName("requestee");
             modelBuilder.Entity<Relationship>().Property(r => r.RelationshipType).HasColumnName("relationship_type");
+            modelBuilder.Entity<Relationship>().Property(r => r.Status).HasColumnName("status");
 
             SeedDatabase(modelBuilder);
         }
@@ -43,9 +44,10 @@ namespace UserService.Persistence
                 new Relationship()
                 {
                     Id = new Guid("709fb6ba-705a-449b-8060-d09626deca01"),
-                    User1 = new Guid("f8b784ae-9dea-48e2-8d81-20f9dcb532bd"),
-                    User2 = new Guid("e1db792b-fce0-4355-a9bc-242fbf7232c6"),
-                    RelationshipType = "friend"
+                    Requestor = new Guid("f8b784ae-9dea-48e2-8d81-20f9dcb532bd"),
+                    Requestee = new Guid("e1db792b-fce0-4355-a9bc-242fbf7232c6"),
+                    RelationshipType = "friend",
+                    Status = "accepted"
                 }
             };
 
