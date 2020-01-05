@@ -29,7 +29,7 @@ namespace UserService.Controllers
             return Ok(users);
         }
 
-        [HttpGet("user/{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetUserById(Guid id)
         {
             var user = await _userRepository.GetUser(id);
@@ -46,7 +46,7 @@ namespace UserService.Controllers
             return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
         }
 
-        [HttpDelete("user/{id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(Guid id)
         {
             var deletedUser = await _userRepository.DeleteUser(id);
@@ -55,7 +55,7 @@ namespace UserService.Controllers
             return Ok(deletedUser);
         }
 
-        [HttpPut("user/{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(Guid id, [FromBody] User user)
         {
             if (id != user.Id)

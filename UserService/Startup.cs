@@ -33,7 +33,7 @@ namespace UserService
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRelationshipRepository, RelationshipRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddSwaggerGen(sa => sa.SwaggerDoc("UserService-V1", new OpenApiInfo() { Title = "User Service", Version = "1" }));
+            services.AddSwaggerGen(sa => sa.SwaggerDoc("v1", new OpenApiInfo() { Title = "User Service", Version = "1" }));
             services.AddCors(sa =>
             {
                 sa.AddPolicy("allow gateways", cp =>
