@@ -33,7 +33,16 @@ namespace UserService
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRelationshipRepository, RelationshipRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddSwaggerGen(sa => sa.SwaggerDoc("v1", new OpenApiInfo() { Title = "User Service", Version = "1" }));
+            services.AddSwaggerGen(sa => sa.SwaggerDoc("UserService-V1", new OpenApiInfo() { Title = "User Service", Version = "1" }));
+            services.AddCors(sa =>
+            {
+                sa.AddPolicy("allow gateways", cp =>
+                {
+                    cp.WithOrigins(Configuration.GetSection("Security:AllowedOrigins").Get<string[]>())
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +52,8 @@ namespace UserService
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("allow gateways");
 
             app.UseHttpsRedirection();
 
