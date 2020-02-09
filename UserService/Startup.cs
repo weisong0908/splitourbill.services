@@ -53,9 +53,9 @@ namespace UserService
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors("allow gateways");
+            // app.UseCors("allow gateways");
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
 
