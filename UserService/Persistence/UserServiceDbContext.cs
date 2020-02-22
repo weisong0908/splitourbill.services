@@ -15,12 +15,12 @@ namespace UserService.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().ToTable("users");
+            modelBuilder.Entity<User>().ToTable("users", "user_service");
             modelBuilder.Entity<User>().Property(u => u.Id).HasColumnName("id");
             modelBuilder.Entity<User>().Property(u => u.Username).HasColumnName("username");
             modelBuilder.Entity<User>().Property(u => u.EmailAddress).HasColumnName("email_address");
 
-            modelBuilder.Entity<Relationship>().ToTable("relationships");
+            modelBuilder.Entity<Relationship>().ToTable("relationships", "user_service");
             modelBuilder.Entity<Relationship>().Property(r => r.Id).HasColumnName("id");
             modelBuilder.Entity<Relationship>().Property(r => r.Requestor).HasColumnName("requestor");
             modelBuilder.Entity<Relationship>().Property(r => r.Requestee).HasColumnName("requestee");
