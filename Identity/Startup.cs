@@ -29,7 +29,7 @@ namespace Identity
             var builder = services.AddIdentityServer()
                 .AddInMemoryIdentityResources(Config.Ids)
                 .AddInMemoryApiResources(Config.Apis)
-                .AddInMemoryClients(Configuration.GetSection("IdentityServer:Clients"))
+                .AddInMemoryClients(Config.Clients)
                 .AddTestUsers(Config.TestUsers);
 
             // not recommended for production - you need to store your key material somewhere secure

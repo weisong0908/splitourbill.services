@@ -6,25 +6,37 @@ using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Models;
 using IdentityServer4.Test;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 
 namespace Identity
 {
-    public static class Config
+    public class Config
     {
+        static string[] allowedClientOrigins;
+
+        public Config(IConfiguration configuration)
+        {
+            allowedClientOrigins = configuration.GetSection("Security:AllowedClientOrigins").Get<string[]>();
+        }
+
         public static IEnumerable<IdentityResource> Ids =>
             new IdentityResource[]
             {
                 new IdentityResources.OpenId(),
-                new IdentityResource("basicInfo", new List<string>(){JwtClaimTypes.Role, JwtClaimTypes.Name})
+                new IdentityResource("basicInfo", new List<string>()
+                {
+                    JwtClaimTypes.Role,
+                    JwtClaimTypes.Name
+                })
             };
 
         public static IEnumerable<ApiResource> Apis =>
             new ApiResource[]
             {
-                new ApiResource("apigateway.web", "Gateway for web")
+                new ApiResource("apigateway.webusers", "API gateway for web users")
             };
 
         public static IEnumerable<Client> Clients =>
@@ -52,11 +64,9 @@ namespace Identity
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         "basicInfo",
-                        "apigateway.web"
+                        "apigateway.webusers"
                     },
-                    AllowedCorsOrigins = {"http://localhost:8080"},
-                    AllowAccessTokensViaBrowser = true,
-                    RequireConsent = false
+                    AllowedCorsOrigins = allowedClientOrigins
                 }
             };
 
