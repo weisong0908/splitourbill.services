@@ -22,7 +22,7 @@ namespace IdentityService
             var services = new ServiceCollection();
             services.AddLogging();
             services.AddDbContext<ApplicationDbContext>(options =>
-               options.UseSqlite(connectionString));
+               options.UseNpgsql(connectionString));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -41,6 +41,7 @@ namespace IdentityService
                     {
                         alice = new ApplicationUser
                         {
+                            Id = Guid.NewGuid().ToString(),
                             UserName = "alice"
                         };
                         var result = userMgr.CreateAsync(alice, "Pass123$").Result;
@@ -74,6 +75,7 @@ namespace IdentityService
                     {
                         bob = new ApplicationUser
                         {
+                            Id = Guid.NewGuid().ToString(),
                             UserName = "bob"
                         };
                         var result = userMgr.CreateAsync(bob, "Pass123$").Result;
