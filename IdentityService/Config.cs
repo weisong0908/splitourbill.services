@@ -94,9 +94,10 @@ namespace IdentityService
                     AllowedScopes = new List<string>()
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
-                        "apigateway.webusers"
+                        "apigateway.webusers",
+                        "profile"
                     },
-                    AllowedCorsOrigins = {"http://localhost:5002"}
+                    AllowedCorsOrigins = {"http://localhost:8080"}
                 }
             };
     }
